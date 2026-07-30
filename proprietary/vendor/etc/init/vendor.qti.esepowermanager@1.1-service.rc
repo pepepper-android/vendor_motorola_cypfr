@@ -7,8 +7,15 @@ on boot && property:ro.vendor.hw.nfc=ese_nq
     start qti_esepowermanager_service_1_1
 
 service qti_esepowermanager_service_1_1 /vendor/bin/hw/vendor.qti.esepowermanager@1.1-service
-    interface vendor.qti.esepowermanager@1.0::IEsePowerManager default
-    interface vendor.qti.esepowermanager@1.1::IEsePowerManager default
+    # The two "interface vendor.qti.esepowermanager@1.x::IEsePowerManager default"
+    # lines are dropped. host_init_verifier rejects them because no hidl_interface
+    # target in the tree defines them -- we ship the HAL as a prebuilt, so only the
+    # compiled .so exists:
+    #   invalid interface in service 'qti_esepowermanager_service_1_1':
+    #   Interface is not in the known set of hidl_interfaces
+    # This service is not a lazy HAL: it is "disabled" and started explicitly from
+    # the trigger above, so the declarations were informational only and the service
+    # still registers with hwservicemanager at runtime.
     class hal
     user system
     group nfc system
