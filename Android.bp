@@ -105,6 +105,7 @@ android_app_import {
 	owner: "motorola",
 	apk: "proprietary/product/priv-app/EuiccGoogle/EuiccGoogle.apk",
 	presigned: true,
+	preprocessed: true,
 	dex_preopt: {
 		enabled: false,
 	},
