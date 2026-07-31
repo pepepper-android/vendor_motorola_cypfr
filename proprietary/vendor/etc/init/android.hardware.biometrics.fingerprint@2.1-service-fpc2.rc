@@ -3,17 +3,19 @@ service fps_hal /vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-servi
     # in /data. As a workaround, postpone startup until later in boot once
     # /data is mounted.
     class late_start
-    # Without this, init has no way to answer hwservicemanager when a client
-    # asks for the HAL before init.oem.fingerprint2.sh has started it:
+    # Deliberately no "interface android.hardware.biometrics.fingerprint@2.1::
+    # IBiometricsFingerprint default" line here, matching stock. It looks like
+    # the fix for
     #
     #   Could not find 'android.hardware.biometrics.fingerprint@2.1::
     #   IBiometricsFingerprint/default' for ctl.interface_start
     #
-    # The service is only started from that script, at late_start, so the
-    # framework regularly gets there first. Declaring the interface lets
-    # hwservicemanager start it on demand instead of failing the lookup; it
-    # still only happens once /data is up, since nothing asks before then.
-    interface android.hardware.biometrics.fingerprint@2.1::IBiometricsFingerprint default
+    # but cypfr is dual-sourced: ets_hal serves that same interface on Egistec
+    # units. Declaring it here would let hwservicemanager lazy-start the FPC HAL
+    # on an Egis unit, where it cannot work, and it would sit there registered
+    # over nothing until init.oem.fingerprint2.sh got round to starting the
+    # right one. The lookup failures are noise that stops on its own once that
+    # script starts whichever HAL matches the sensor.
     user system
     group system input uhid
     disabled
