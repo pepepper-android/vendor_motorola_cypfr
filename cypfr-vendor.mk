@@ -1538,7 +1538,9 @@ PRODUCT_COPY_FILES += \
     vendor/motorola/cypfr/proprietary/vendor/bin/vendor_modprobe.sh:$(TARGET_COPY_OUT_VENDOR)/bin/vendor_modprobe.sh \
     vendor/motorola/cypfr/proprietary/vendor/bin/wdsdaemon:$(TARGET_COPY_OUT_VENDOR)/bin/wdsdaemon \
     vendor/motorola/cypfr/proprietary/vendor/lib/hw/memtrack.default.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/memtrack.default.so \
-    vendor/motorola/cypfr/proprietary/vendor/lib64/hw/memtrack.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/memtrack.default.so
+    vendor/motorola/cypfr/proprietary/vendor/lib64/hw/memtrack.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/memtrack.default.so \
+    vendor/motorola/cypfr/proprietary/vendor/firmware/ILITEK_FW_CSOT_7807S:$(TARGET_COPY_OUT_VENDOR)/firmware/ILITEK_FW_CSOT_7807S \
+    vendor/motorola/cypfr/proprietary/vendor/firmware/ILITEK_FW_TM_7807S:$(TARGET_COPY_OUT_VENDOR)/firmware/ILITEK_FW_TM_7807S
 
 PRODUCT_PACKAGES += \
     libfastcvopt \
