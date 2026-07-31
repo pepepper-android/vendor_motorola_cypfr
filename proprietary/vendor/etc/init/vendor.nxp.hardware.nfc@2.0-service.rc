@@ -35,6 +35,12 @@ on boot && property:ro.vendor.hw.nfc=nq
 
 service nqnfc_2_0_hal_service /vendor/bin/hw/vendor.nxp.hardware.nfc@2.0-service
     class early_hal
+    # nfc_nci.nqx.default.hw.so was built against the Android 11 libbase and
+    # still references fmt::v6::internal::vformat<char>() and the non-template
+    # android::base::Trim(); A15's libbase exports neither, so the service
+    # cannot link without this shim. It forwards just those two calls to a
+    # private copy of the VNDK 30 libbase - see device/motorola/cypfr/nfc_compat.
+    setenv LD_PRELOAD /vendor/lib64/libnfc_fmt_compat.so
     user nfc
     group nfc diag
     disabled
