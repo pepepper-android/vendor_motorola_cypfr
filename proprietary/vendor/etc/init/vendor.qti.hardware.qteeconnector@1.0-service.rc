@@ -1,0 +1,18 @@
+on boot && property:ro.vendor.hw.nfc=ese_nq
+    start qteeconnector-hal-1-0
+
+service qteeconnector-hal-1-0 /vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
+    # host_init_verifier rejects these two lines because no hidl_interface target
+    # in the tree defines vendor.qti.hardware.qteeconnector@1.0 - we ship the HAL
+    # as a prebuilt, so only the compiled .so exists:
+    #   invalid interface in service 'qteeconnector-hal-1-0':
+    #   Interface is not in the known set of hidl_interfaces
+    # Same treatment as vendor.qti.esepowermanager@1.1-service.rc. The service is
+    # "disabled" and started explicitly from the trigger above rather than lazily,
+    # so the declarations were informational; it still registers at runtime.
+    # interface vendor.qti.hardware.qteeconnector@1.0::IAppConnector default
+    # interface vendor.qti.hardware.qteeconnector@1.0::IGPAppConnector default
+    class hal
+    user system
+    group system
+    disabled
