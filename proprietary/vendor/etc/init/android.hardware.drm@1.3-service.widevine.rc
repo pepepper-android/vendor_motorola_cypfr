@@ -10,6 +10,14 @@ service vendor.move_data_sh /system/bin/move_widevine_data.sh
     oneshot
 
 service vendor.drm-widevine-hal-1-3 /vendor/bin/hw/android.hardware.drm@1.3-service.widevine
+    # libwvhidl.so was built when BoringSSL still exported CBS_init(); upstream
+    # has since made it an OPENSSL_INLINE, so it is no longer a symbol in
+    # libcrypto and the service cannot link:
+    #   CANNOT LINK EXECUTABLE ".../android.hardware.drm@1.3-service.widevine":
+    #     cannot locate symbol "CBS_init" referenced by "/vendor/lib64/libwvhidl.so"
+    # It is the only symbol the process is missing. libwv_cbs_compat supplies it -
+    # see device/motorola/cypfr/drm_compat.
+    setenv LD_PRELOAD /vendor/lib64/libwv_cbs_compat.so
     interface android.hardware.drm@1.0::ICryptoFactory widevine
     interface android.hardware.drm@1.0::IDrmFactory widevine
     interface android.hardware.drm@1.1::ICryptoFactory widevine
