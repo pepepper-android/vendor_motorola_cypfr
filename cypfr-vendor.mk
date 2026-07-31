@@ -1536,7 +1536,9 @@ PRODUCT_COPY_FILES += \
     vendor/motorola/cypfr/proprietary/vendor/bin/tcmd:$(TARGET_COPY_OUT_VENDOR)/bin/tcmd \
     vendor/motorola/cypfr/proprietary/vendor/bin/tcmdhelp:$(TARGET_COPY_OUT_VENDOR)/bin/tcmdhelp \
     vendor/motorola/cypfr/proprietary/vendor/bin/vendor_modprobe.sh:$(TARGET_COPY_OUT_VENDOR)/bin/vendor_modprobe.sh \
-    vendor/motorola/cypfr/proprietary/vendor/bin/wdsdaemon:$(TARGET_COPY_OUT_VENDOR)/bin/wdsdaemon
+    vendor/motorola/cypfr/proprietary/vendor/bin/wdsdaemon:$(TARGET_COPY_OUT_VENDOR)/bin/wdsdaemon \
+    vendor/motorola/cypfr/proprietary/vendor/lib/hw/memtrack.default.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/memtrack.default.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib64/hw/memtrack.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/memtrack.default.so
 
 PRODUCT_PACKAGES += \
     libfastcvopt \
