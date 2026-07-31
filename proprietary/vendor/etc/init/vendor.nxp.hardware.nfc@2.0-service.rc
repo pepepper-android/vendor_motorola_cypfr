@@ -27,11 +27,21 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-on boot && property:ro.vendor.hw.nfc=ese_nq
-    start nqnfc_2_0_hal_service
-
-on boot && property:ro.vendor.hw.nfc=nq
-    start nqnfc_2_0_hal_service
+# NFC is served by android.hardware.nfc-service.nxp, built from hardware/nxp/nfc.
+# This blob stays installed as a fallback but must not start on its own: it would
+# race the AIDL service for /dev/nq-nci, and manifest.xml no longer declares the
+# HIDL interface it registers, so hwservicemanager would refuse it anyway.
+#
+# To fall back to it on-device, without a rebuild: restore the HIDL
+# android.hardware.nfc@1.2 INfc/default entry in /vendor/etc/vintf/manifest.xml,
+# remove /vendor/etc/vintf/manifest/nfc-service-nxp.xml, then either uncomment
+# these triggers or just "start nqnfc_2_0_hal_service".
+#
+# on boot && property:ro.vendor.hw.nfc=ese_nq
+#     start nqnfc_2_0_hal_service
+#
+# on boot && property:ro.vendor.hw.nfc=nq
+#     start nqnfc_2_0_hal_service
 
 service nqnfc_2_0_hal_service /vendor/bin/hw/vendor.nxp.hardware.nfc@2.0-service
     class early_hal
