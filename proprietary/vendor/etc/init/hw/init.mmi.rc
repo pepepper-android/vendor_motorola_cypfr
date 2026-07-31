@@ -91,7 +91,19 @@ on early-init
 on fs
     insmod /vendor/lib/modules/cci_intf.ko
     mkdir /mnt/vendor/persist/fps 0770 system system
-    exec_start vendor.ident-fps-sh
+    # vendor.ident-fps-sh runs /vendor/bin/init.oem.fingerprint.sh, which stock
+    # ships but our blob list does not have - only init.oem.fingerprint2.sh and
+    # init.oem.fingerprint.overlay.sh were picked up. exec_start on a binary
+    # that is not there just fails here on every boot.
+    #
+    # Nothing depends on it: that script only probes the sensor with fpc_ident /
+    # egis_ident and writes the result to /mnt/vendor/persist/fps/vendor_id.
+    # init.oem.fingerprint2.sh reads that file at late_start and, for anything
+    # other than "egis", starts fps_hal - which is what cypfr wants, since the
+    # only fingerprint HAL in the blobs is the FPC one and no ets_hal service
+    # is defined at all. Re-enable this if init.oem.fingerprint.sh ever gets
+    # extracted.
+    # exec_start vendor.ident-fps-sh
 
 on fs && property:ro.vendor.hw.modem_version=*
     # Super modem detection
