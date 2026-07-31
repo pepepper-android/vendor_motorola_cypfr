@@ -1596,7 +1596,22 @@ PRODUCT_COPY_FILES += \
     vendor/motorola/cypfr/proprietary/vendor/lib64/vendor.qti.ims.rcssip@1.2.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.ims.rcssip@1.2.so \
     vendor/motorola/cypfr/proprietary/vendor/lib64/vendor.qti.ims.rcsuce@1.0.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.ims.rcsuce@1.0.so \
     vendor/motorola/cypfr/proprietary/vendor/lib64/vendor.qti.ims.rcsuce@1.1.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.ims.rcsuce@1.1.so \
-    vendor/motorola/cypfr/proprietary/vendor/lib64/vendor.qti.ims.rcsuce@1.2.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.ims.rcsuce@1.2.so
+    vendor/motorola/cypfr/proprietary/vendor/lib64/vendor.qti.ims.rcsuce@1.2.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.ims.rcsuce@1.2.so \
+    vendor/motorola/cypfr/proprietary/system_ext/lib/libwfdcommonutils.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib/libwfdcommonutils.so \
+    vendor/motorola/cypfr/proprietary/system_ext/lib/libwfdconfigutils.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib/libwfdconfigutils.so \
+    vendor/motorola/cypfr/proprietary/system_ext/lib/libwfdservice.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib/libwfdservice.so \
+    vendor/motorola/cypfr/proprietary/system_ext/lib64/libwfdcommonutils.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libwfdcommonutils.so \
+    vendor/motorola/cypfr/proprietary/system_ext/lib64/libwfdconfigutils.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libwfdconfigutils.so \
+    vendor/motorola/cypfr/proprietary/system_ext/lib64/libwfdservice.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libwfdservice.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib/liblog_vendor.so:$(TARGET_COPY_OUT_VENDOR)/lib/liblog_vendor.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib/libpkip.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpkip.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib/libstfactory-vendor.so:$(TARGET_COPY_OUT_VENDOR)/lib/libstfactory-vendor.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib/libtpa.so:$(TARGET_COPY_OUT_VENDOR)/lib/libtpa.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib64/libtpa.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libtpa.so \
+    vendor/motorola/cypfr/proprietary/vendor/bin/hw/vendor.dolby.media.c2@1.0-service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.dolby.media.c2@1.0-service \
+    vendor/motorola/cypfr/proprietary/vendor/lib64/libavservices_minijail_vendor.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libavservices_minijail_vendor.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib64/libcodec2_hidl@1.1.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcodec2_hidl@1.1.so \
+    vendor/motorola/cypfr/proprietary/vendor/lib64/libcodec2_store_dolby.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcodec2_store_dolby.so
 
 PRODUCT_PACKAGES += \
     libfastcvopt \
