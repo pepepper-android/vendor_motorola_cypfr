@@ -18,6 +18,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Added for Android 15. Stock's policy is byte-identical to this one and does not
+# list gettid, because on Android 12 nothing in the process called it. It does
+# now - the daemon dies on every start with
+#   E ATFWD-daemon: libminijail[N]: blocked syscall: gettid
+#   E init: process with updatable components 'vendor.atfwd' exited 4 times
+gettid: 1
 mmap: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE
 munmap: 1
 getuid: 1
